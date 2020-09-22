@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="p-4">
+    <select #locale (change)="changeLocale(locale.value)">
+      <option value="hi">Hindi</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+  <div class="p-4">
+    <h1>{{ "GLOBAL_HEADER_READXINDIA" | translate }}</h1>
+    <p>{{ 'GLOBAL_READX_INDIA_DESCRIPTION' | translate}}</p>
+    <hr/>    
+    <button routerLink="">ROOT</button>
+    <button routerLink="home">Home</button>
+    <router-outlet></router-outlet>
+  </div>
+</div>
