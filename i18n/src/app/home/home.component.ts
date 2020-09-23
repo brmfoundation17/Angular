@@ -13,13 +13,18 @@ export class HomeComponent implements OnInit {
     private translate : TranslateService,
     private i18nServices : I18nServiceService
     ) { 
-    translate.setDefaultLang('en');
-    translate.use('en')
+    //translate.setDefaultLang('hi');
+    this.i18nServices.localeEvent.subscribe(locale =>{ 
+      translate.setDefaultLang(locale);
+      this.translate.use(locale)
+    });
   }
   
   ngOnInit(): void {
-    this.i18nServices.localeEvent.subscribe(locale => this.translate.use(locale));
-    console.log("Home Loaded : "+this.translate.getLangs());
-  }
-
+    this.i18nServices.localeEvent.subscribe(locale => {
+      this.translate.use(locale);
+      this.translate.use(locale)
+    });
+    console.log("Home Loaded : "+this.translate.currentLang);
+  } 
 }

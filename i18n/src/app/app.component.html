@@ -1,9 +1,17 @@
 <div class="container">
   <div class="p-4">
-    <select #locale (change)="changeLocale(locale.value)">
-      <option value="hi">Hindi</option>
-      <option value="en">English</option>
-    </select>
+    <span class="form-inline">
+      <select 
+          class="form-control" 
+          #selectedLang 
+          (change)="changeLocale(selectedLang.value)">
+        <option *ngFor="let language of translate.getLangs()" 
+          [value]="language"
+          [selected]="language === translate.currentLang">
+          {{ language }}
+        </option>
+      </select>
+    </span>
   </div>
   <div class="p-4">
     <h1>{{ "GLOBAL_HEADER_READXINDIA" | translate }}</h1>

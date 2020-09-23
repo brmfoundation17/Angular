@@ -11,11 +11,12 @@ export class AppComponent  {
   title = 'i18n';
 
   constructor(
-    private translate: TranslateService,
+    public translate: TranslateService,
     private i18nServices : I18nServiceService
     ){
-    translate.setDefaultLang('en');
-    translate.use('en');
+      translate.addLangs(i18nServices.getLanguageList());
+      translate.setDefaultLang(i18nServices.getdDfaultLanguage());
+      translate.use(i18nServices.getdDfaultLanguage());    
   }
   changeLocale(locale:string){
     this.i18nServices.changeLocale(locale);
